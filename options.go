@@ -14,6 +14,11 @@ import (
 	"github.com/go-redis/redis/internal/pool"
 )
 
+type Limiter interface {
+	Take() error
+	Put(error)
+}
+
 type Options struct {
 	// The network type, either tcp or unix.
 	// Default is tcp.
